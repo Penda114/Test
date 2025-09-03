@@ -2,22 +2,36 @@
 <html>
 <head>
   <style>
-    body { margin: 0; background: #0a0a23; }
-    .dot {
+    body { margin: 0; overflow: hidden; background: #0a0a23; }
+    .data-stream {
       position: absolute;
-      width: 5px;
-      height: 5px;
-      background: #00ff41;
-      animation: fall 2s linear infinite;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: #00ff41;
+      animation: stream 5s linear infinite;
     }
-    @keyframes fall {
-      0% { top: 0; }
-      100% { top: 100%; }
+    @keyframes stream {
+      0% { transform: translateY(100%); }
+      100% { transform: translateY(-100%); }
     }
   </style>
 </head>
 <body>
-  <div class='dot' style='left: 50px;'></div>
-  <div class='dot' style='left: 150px; animation-delay: 0.5s;'></div>
+  <script>
+    function createStream() {
+      const stream = document.createElement('div');
+      stream.className = 'data-stream';
+      stream.style.left = Math.random() * 100 + 'vw';
+      stream.style.animationDuration = Math.random() * 2 + 3 + 's';
+      let text = '';
+      for (let i = 0; i < 20; i++) {
+        text += String.fromCharCode(65 + Math.floor(Math.random() * 26)) + ' ';
+      }
+      stream.textContent = text;
+      document.body.appendChild(stream);
+      setTimeout(() => stream.remove(), 5000);
+    }
+    setInterval(createStream, 200);
+  </script>
 </body>
 </html>
