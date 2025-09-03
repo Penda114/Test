@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { margin: 0; background: #0a0a23; }
+    .dot {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: #00ff41;
+      animation: fall 2s linear infinite;
+    }
+    @keyframes fall {
+      0% { top: 0; }
+      100% { top: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class='dot' style='left: 50px;'></div>
+  <div class='dot' style='left: 150px; animation-delay: 0.5s;'></div>
+</body>
+</html>
